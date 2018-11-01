@@ -1,8 +1,6 @@
 db.createCollection( "room", {
    validator: { $jsonSchema: {
       bsonType: "object",
-      required: ["number"],
-      required: ["string"],
       properties: {
          roomName: {
             bsonType : "string",
