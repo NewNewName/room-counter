@@ -1,37 +1,66 @@
+  .forms {
+  	float: left;
+  }
+  
+  .current-db-container {
+  float: left;
+  margin-left: 75px;
+  }
+  .current-db {
+  	border: 1px solid #DCDCDC;
+  	width: 300px;
+  	margin-top: 25px;
+  	margin-bottom: 10px;
+  	overflow-y: scroll;
+  	float: left;
+  }
+  
+  button.btn {
+    display: block;
+    clear: none;
+    margin: 16px 0 13px;
+    padding-top: .14rem;
+    padding-bottom: .2rem;
+    border-width: .0625rem;
+    border-color: #c6c6c6;
+    border-radius: 4px;
+    background-color: #e2ebeb;
+    text-align: left;
+  }
+  
+  .container-fluid {
+  margin-bottom: 20px;
+  
+  }
+  
+  .container-fluid.container-1 {
+    border-width: .0625rem;
+    border-style: solid;
+    height: 500px;
+  }
+
+  .container-fluid.container-2 {
+    border-width: .0625rem;
+    border-style: solid;
+    height: 300px;
+  }
+
+  .container-fluid.container-3 {
+    border-width: .0625rem;
+    border-style: solid;
+    height: 300px;
+  }
+  
+    h4.large-heading {
+    padding-top: 20px;
+  }
+
 @media screen and (min-width: 17.75rem) {
   /* Text Elements */
-
-  h4.large-heading {
-    margin-top: 10px;
-    margin-bottom: .4rem;
-  }
 
   span.text-element.small-heading {
     padding-top: 9px;
     padding-bottom: 10px;
-  }
-
-  .container-fluid.container-2 {
-    margin-bottom: 15px;
-    border-width: .0625rem;
-    border-style: solid;
-  }
-
-  .container-fluid.container-3 {
-    margin-bottom: 15px;
-    border-width: .0625rem;
-    border-style: solid;
-  }
-
-  .container-fluid.container-1 {
-    border-width: .0625rem;
-    border-style: solid;
-  }
-
-  button.btn {
-    display: block;
-    margin-top: 14px;
-    margin-bottom: 12px;
   }
 }
 
@@ -42,89 +71,21 @@
     margin-bottom: 1.42rem;
   }
 
-  h4.large-heading {
-    padding-top: 10px;
-  }
-
   span.text-element.small-heading {
     padding-top: 10px;
     padding-bottom: 10px;
   }
 
-  /* Interaction Elements */
-
-  select.select.drop-down-1 {
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 11px 5px;
-  }
-
-  .container-fluid.container-3 {
-    margin-top: 27px;
-    padding-top: 0;
-    border-width: .0625rem;
-    border-style: solid;
-  }
-
-  .container-fluid.container-1 {
-    border-width: .0625rem;
-    border-style: solid;
-  }
-
-  .container-fluid.container-2 {
-    border-width: .0625rem;
-    border-style: solid;
-  }
-
-  button.btn {
-    display: block;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-}
-
-@media screen and (min-width: 48rem) {
+}@media screen and (min-width: 48rem) {
   /* Text Elements */
 
-  h4.large-heading {
-    padding-top: 10px;
-  }
 
   span.text-element.small-heading {
     padding-top: 10px;
     padding-bottom: 10px;
   }
-
-  /* Interaction Elements */
-
-  select.select.drop-down-1 {
-    margin-top: 0;
-  }
-
-  .container-fluid.container-1 {
-    border-width: .0625rem;
-    border-style: solid;
-  }
-
-  .container-fluid.container-3 {
-    border-width: .0625rem;
-    border-style: solid;
-  }
-
-  .container-fluid.container-2 {
-    margin-bottom: 28px;
-    padding-bottom: 0;
-    border-width: .0625rem;
-    border-style: solid;
-  }
-
-  button.btn {
-    display: block;
-    margin-top: 13px;
-    margin-bottom: 15px;
-  }
 }
+
 
 @media screen and (min-width: 62rem) {
   /* Text Elements */
@@ -138,69 +99,9 @@
     font-size: 1.5rem;
   }
 
-  h4.large-heading {
-    padding-top: 17px;
-    padding-right: 0;
-  }
-
   span.text-element.small-heading {
     padding-top: 10px;
     padding-right: 0;
     padding-bottom: 10px;
-  }
-
-  /* Interaction Elements */
-
-  input[type=text].input-1 {
-    padding-top: 1px;
-  }
-
-  input[type=number].input {
-    padding-top: 1px;
-  }
-
-  /* Layout Elements */
-
-  body > .row > [class*='col-xs-'].column-1 {
-    padding-right: 2rem;
-    padding-left: 1rem;
-    border-width: .0625rem;
-  }
-
-  body > .row > [class*='col-xs-'].column-2 {
-    margin-top: 0;
-    margin-right: 0;
-    margin-left: 0;
-    padding-right: 1rem;
-    padding-left: 2rem;
-  }
-
-  button.btn {
-    display: block;
-    clear: none;
-    margin: 16px 0 13px;
-    padding-top: .14rem;
-    padding-bottom: .2rem;
-    border-width: .0625rem;
-    border-color: #c6c6c6;
-    border-radius: 4px;
-    background-color: #e2ebeb;
-    text-align: left;
-  }
-
-  .container-fluid.container-1 {
-    border-width: .0625rem;
-    border-style: solid;
-  }
-
-  .container-fluid.container-2 {
-    border-width: .0625rem;
-    border-style: solid;
-  }
-
-  .container-fluid.container-3 {
-    margin-top: 27px;
-    border-width: .0625rem;
-    border-style: solid;
   }
 }
