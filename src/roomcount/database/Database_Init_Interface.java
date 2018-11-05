@@ -1,78 +1,62 @@
 package roomcount.database;
 
-public class Database_Init_Interface {
+import com.mongo.*;
+import java.sql.Time;
+
+public class Database_Init_Interface extends DatabaseInterface{
+    //private MongoDatabase _db = getConnection().getDatabase(database_name);
+	//private MongoCollection _col = db.getCollection(database_collection);
 	
+	private String DB_NAME = "";
+	private MongoDatabase db;
 	
-    private MongoDatabase _db = getConnection().getDatabase(database_name);
-    private MongoCollection _col = db.getCollection(database_collection);
-	
-	//Session Fields
-	private String _sessionName;
-	private int _sessionNumber;
-	private String _speaker;
-	private int _roomCount1;
-	private int _roomCount2;
-	private int _roomCount3;
-	
-	//Room Fields
-	private String _roomName;
-	private int _capacity;
-	
-	//Timeslot Fields
-	private Date _date;
-	private String _startTime;
-	private String _endTime;
-	
-	public void initInterface() {
-		
-		
-		
-		
-		
+	public InitDatabaseInterface(String url , int port) {
+		super(url , port);
 	}
 	
-    private static MongoClient getConnection() {
-        int port_num = 8080;
-        String url = "localhost";
-        
-        MongoClient mongoClntObj = new MongoClient(url, port_num);
-        return mongoClntObj;
-    }
-	
-	public boolean pushSessionDocument() {
+	public boolean pushSessionDocument(String sessionName , int id , String speaker , int roomId , int timeSlotId) {
+		MongoCollection<Document> sessionColl = db.getCollection("session");
+        Document newSessionDoc = new Document("sessionID" , id).append(
+				"sessionName" , sessionName
+			).append(
+				"speakerName" , speaker
+			).append(
+				"roomId" , roomId
+			).append(
+				"timeSlotId" , timeSlotId
+			);
+		sessionColl.insertOne(newSessionDoc);
 		
-		
-		
-		
-		
-        List<BasicDBObject> sessionDoc = new ArrayList<BasicDBObject>();
-        sesh.add(new BasicDBObject("sessionName", _sessionName));
-        sesh.add(new BasicDBObject("sessionID", _sessionNumber));
-        sesh.add(new BasicDBObject("speakerName", _speaker));
-        sesh.add(new BasicDBObject("speakerName", _roomCount1));
-        sesh.add(new BasicDBObject("speakerName", _roomCount2));
-        sesh.add(new BasicDBObject("speakerName", _roomCount3));	
-		return false;
+		//TODO: Check if it actually worked
+		return true;
 	}
 	
-	public boolean pushRoomDocument() {
+	public boolean pushRoomDocument(String roomName , int id , int capacity) {
 		
+		MongoCollection<Document> roomColl = db.getCollection("room");
+        Document newRoomDoc = new Document("roomID" , id).append(
+				"roomName" , roomName
+			).append(
+				"capacity" , capacity
+			);
+		roomColl.insertOne(newRoomDoc);
 		
-		List<BasicDBObject> roomDoc = new ArrayList<BasicDBObject>();
-		roomDoc.add(new BasicDBObject("_roomName", roomName));
-		roomDoc.add(new BasicDBObject("_capacity", roomCapacity));
-		return false;
+		//TODO: Check if it actually worked
+		return true;
 	}
 	
-	public boolean pushTimeslotDocument() {
+	public boolean pushTimeslotDocument(int id , Time startTime , Time endTime) {
 		
+		MongoCollection<Document> timeSlotColl = db.getCollection("timeslot");
+        Document newTimeSlotDoc = new Document("timeSlotId" , id).append(
+				"startTime" , startTime
+			).append(
+				"capacity" , endTime
+			);
+		roomColl.insertOne(newTimeSlotDoc);
 		
-		List<BasicDBObject> timeSlotDoc = new ArrayList<BasicDBObject>();
-		timeSlotDoc.add(new BasicDBObject("_date", startTime));
-		timeSlotDoc.add(new BasicDBObject("_startTime", endTime));
-		timeSlotDoc.add(new BasicDBObject("_endTime", date));
-        
-		return false;
+		//TODO: Check if it actually worked
+		return true;
 	}
 	
 	

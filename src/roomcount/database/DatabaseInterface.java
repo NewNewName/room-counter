@@ -1,8 +1,25 @@
 package roomcount.database;
 
 import java.sql.Time;
+import com.mongodb.*;
 
 public class DatabaseInterface {
+
+	private String DB_NAME = "";
+	private MongoDatabase db;
+
+	public DatabaseInterface(String url , int port){
+		db = getConnection(url , port).getDatabase(DB_NAME);
+	}
+
+	private static MongoClient getConnection(url , port_num) {
+        int port_num = 8080;
+        String url = "localhost";
+        
+        MongoClient mongoClntObj = new MongoClient(url, port_num);
+        return mongoClntObj;
+	}
+	
 	public String getRoomName(){
 		return "";
 	}
