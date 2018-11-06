@@ -37,7 +37,7 @@ function modifySession() { // called by modify button
 function displayTimeSlots(json) {
 	var obj = JSON.parse(json);
 
-	var output = '<select id="timeSlotSelect" class="dynam-select">';
+	var output = '<select id="timeSlotSelect" class="dynam-select" multiple>';
 	var count = 0;
 	for ( var i in obj.timeslot) {
 		output += '<option value=' + obj.timeslot[count].id + '>'
@@ -53,7 +53,7 @@ function displayTimeSlots(json) {
 function displayRooms(json) {
 	var obj = JSON.parse(json);
 
-	var output = '<select id="roomSelect" class="dynam-select">';
+	var output = '<select id="roomSelect" class="dynam-select" multiple>';
 	var count = 0;
 	for ( var i in obj.room) {
 		output += '<option value=' + obj.room[count].id + '>Roomname:'
