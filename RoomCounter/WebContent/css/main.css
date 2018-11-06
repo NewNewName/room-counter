@@ -1,24 +1,33 @@
+.dynam-select {
+	width: 100%;
+	height: 100%;
+}
+  
   .forms {
   	float: left;
   }
   
+  input {
+  width: 200px;
+  }
+  
   .current-db-container {
-  float: left;
-  margin-left: 75px;
+  	float: left;
+  	margin-left: 75px;
   }
   .current-db {
   	border: 1px solid #DCDCDC;
   	width: 300px;
   	margin-top: 25px;
   	margin-bottom: 10px;
-  	overflow-y: scroll;
+/*   	overflow-y: scroll; */
   	float: left;
   }
   
   button.btn {
-    display: block;
+    display: inline-block;
     clear: none;
-    margin: 16px 0 13px;
+    margin: 0 0 13px;
     padding-top: .14rem;
     padding-bottom: .2rem;
     border-width: .0625rem;
