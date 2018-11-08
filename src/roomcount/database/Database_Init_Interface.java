@@ -4,7 +4,6 @@ import com.mongo.*;
 
 public class Database_Init_Interface extends DatabaseInterface{
     //private MongoDatabase _db = getConnection().getDatabase(database_name);
-	//private MongoCollection _col = db.getCollection(database_collection);
 	
 	private String DB_NAME = "";
 	private MongoDatabase db;
@@ -105,5 +104,4 @@ public class Database_Init_Interface extends DatabaseInterface{
 		}
 		return true;
     }
-
 }
