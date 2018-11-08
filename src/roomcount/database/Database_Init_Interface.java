@@ -1,125 +1,107 @@
 package roomcount.database;
 
-public class Database_Init_Interface {
+import com.mongo.*;
+
+public class Database_Init_Interface extends DatabaseInterface{
+    //private MongoDatabase _db = getConnection().getDatabase(database_name);
 	
-	//Database Objects
-    private MongoDatabase _db;
-    private MongoCollection _sessions;
-    private MongoCollection _rooms;
-    private MongoCollection _timeSlots;
+	private String DB_NAME = "";
+	private MongoDatabase db;
 	
-	//Session Fields
-	private String _sessionName;
-	private int _sessionNumber;
-	private String _speaker;
-	private int _roomCount1;
-	private int _roomCount2;
-	private int _roomCount3;
+	public InitDatabaseInterface(String url , int port) {
+		super(url , port);
+	}
 	
-	//Room Fields
-	private String _roomName;
-	private int _capacity;
+	public boolean pushSessionDocument(String sessionName , String id , String speaker , String roomId , String timeSlotId) {
+
+		MongoCollection<Document> sessionColl = db.getCollection("Session");
+
+		//check and convert ints
+
+		if(!isNewRoom(id , sessionColl)){
+			return false;
+		}
+
+        Document newSessionDoc = new Document("sessionID" , id).append(
+				"sessionName" , sessionName
+			).append(
+				"speakerName" , speaker
+			).append(
+				"roomId" , roomId
+			).append(
+				"timeSlotId" , timeSlotId
+			);
+
+		
+		sessionColl.insertOne(newSessionDoc);
+		
+		return true;
+	}
 	
-	//Timeslot Fields
-	private Date _date;
-	private String _startTime;
-	private String _endTime;
+	public boolean pushRoomDocument(String roomName , String id , String capacity) {
+		
+		MongoCollection<Document> roomColl = db.getCollection("Room");
+
+		//check and convert ints
+
+		if(!isNewRoom(roomName , roomColl)){
+			return false;
+		}
+
+        Document newRoomDoc = new Document("roomID" , id).append(
+				"roomName" , roomName
+			).append(
+				"capacity" , capacity
+			);
+
+		roomColl.insertOne(newRoomDoc);
+		
+		return true;
+	}
 	
-	public void initInterface() {
-		_db = getConnection().getDatabase(database_name);
-		_sessions = db.getCollection("Sessions");
-		_rooms = db.getCollection("Rooms");
-		_timeSlots = db.getCollection("TimeSlots");
-	}	
-    private static MongoClient getConnection() {
-        int port_num = 8080;
-        String url = "localhost";
-        return new MongoClient(url, port_num);
+	public boolean pushTimeslotDocument(String id , String startTime , String endTime) {
+		
+		MongoCollection<Document> timeSlotColl = db.getCollection("TimeSlot");
+
+		//check and convert to epoch
+
+		if(!isNewTimeSlot(startTime_int , endTime_int , timeSlotColl)){
+			return false;
+		}
+
+        Document newTimeSlotDoc = new Document("timeSlotId" , id).append(
+				"startTime" , startTime
+			).append(
+				"capacity" , endTime
+			);
+
+		roomColl.insertOne(newTimeSlotDoc);
+		
+		return true;
+	}
+	
+	
+	private boolean isNewSession(String roomName , MongoCollection<Document> col) {
+        FindIterable<Document> cursor = col.find(eq("roomName", roomName));
+        for(Document doc : cursor){
+            return false;
+		}
+		return true;
+	}
+
+	private boolean isNewTimeSlot(int startTime , int endTime , MongoCollection<Document> col) {
+    	FindIterable<Document> cursor = col.find(and(eq("startTime", startTime) , eq("endTime" , endTime)));
+        for(Document doc : cursor){
+            return false;
+		}
+		return true;
+	}
+	
+    private boolean isNewRoom(String sessionID , MongoCollection<Document> col) {
+        FindIterable<Document> cursor = col.find(eq("sessionID", sessionID));
+        for(Document doc : cursor){
+            return false;
+		}
+		return true;
     }
-    
-	//Needs Validation
-	public boolean pushSessionDocument(String sessionName, String sessionNumber, String speaker, String roomCount1, String roomCount2, String roomCount3) {
-		
-		//Validation Check
-		
-		List<BasicDBObject> sessionDoc = new ArrayList<BasicDBObject>();
-		sesh.add(new BasicDBObject("sessionName", _sessionName));
-		sesh.add(new BasicDBObject("sessionID", _sessionNumber));
-		sesh.add(new BasicDBObject("speakerName", _speaker));
-		sesh.add(new BasicDBObject("speakerName", _roomCount1));
-		sesh.add(new BasicDBObject("speakerName", _roomCount2));
-		sesh.add(new BasicDBObject("speakerName", _roomCount3));	
-		
-	    if (isNewSession()){
-	    	
-	    	//Send to database
-	    	
-	    	return true;
-		}
-	    
-		return false;
-	}
-	
-	//Needs Validation
-	public boolean pushRoomDocument(String roomName, String roomCapacity) {
-		
-		//Validation Check
-		
-		List<BasicDBObject> roomDoc = new ArrayList<BasicDBObject>();
-		roomDoc.add(new BasicDBObject("_roomName", roomName));
-		roomDoc.add(new BasicDBObject("_capacity", roomCapacity));
-		
-	    if (isNewRoom()){
-	    	
-	    	//Send to database
-	    	
-	    	return true;
-		}
-	    
-		return false;
-	}	
-	
-	//Needs Validation
-	public boolean pushTimeslotDocument(String startTime, String endTime, String date) {
-		
-		//Validation Check
-		
-		List<BasicDBObject> timeSlotDoc = new ArrayList<BasicDBObject>();
-		timeSlotDoc.add(new BasicDBObject("_date", startTime));
-		timeSlotDoc.add(new BasicDBObject("_startTime", endTime));
-		timeSlotDoc.add(new BasicDBObject("_endTime", date));
-		
-	    if (isNewSession()){
-	    	
-	    	//Send to database
-	    	
-	    	return true;
-		}
-	    
-		return false;
-	}
-	
-	//Needs to be completed
-	private boolean isNewSession() {
-        FindIterable<Document> cursor = col.find(whereQuery);
-        for(Document doc : cursor){
-            //Session has already been created
-        }
-	}
-	
-	//Needs to be completed
-	private boolean isNewRoom() {
-        FindIterable<Document> cursor = col.find(whereQuery);
-        for(Document doc : cursor){
-            //Session has already been created
-        }
-	}
-	
-	//Needs to be completed
-	private boolean isNewTimeSlot() {
-        FindIterable<Document> cursor = col.find(whereQuery);
-        for(Document doc : cursor){
-            //Session has already been created
-        }
-	}
 }
