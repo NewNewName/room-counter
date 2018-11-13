@@ -3,9 +3,11 @@ package com.mongodb.DBInterface;
 import org.bson.Document;
 
 import com.mongodb.*;
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+
+import roomcount.database.DatabaseInterface;
+
 
 public class Database_Init_Interface extends DatabaseInterface{
     //private MongoDatabase _db = getConnection().getDatabase(database_name);

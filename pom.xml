@@ -26,17 +26,33 @@
   </build>
   <dependencies>
 		<!-- MongoDB Java Driver -->
-		<dependency>
-       		<groupId>org.mongodb</groupId>
-       		<artifactId>mongodb-driver</artifactId>
-       		<version>3.8.2</version>
-   		</dependency>
+<dependency>
+       <groupId>org.mongodb</groupId>
+       <artifactId>mongodb-driver</artifactId>
+       <version>3.8.2</version>
+   </dependency>
+     <dependency>
+    <groupId>org.mongodb</groupId>
+    <artifactId>mongo-java-driver</artifactId>
+    <version>3.4.2</version>
+  </dependency>
+   <!-- https://mvnrepository.com/artifact/org.mongodb/bson -->
+<dependency>
+    <groupId>org.mongodb</groupId>
+    <artifactId>bson</artifactId>
+    <version>3.4.3</version>
+</dependency>
 		<!-- JSTL libraries for JSP pages -->
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+		<dependency>
+    <groupId>org.mongodb</groupId>
+    <artifactId>bson</artifactId>
+    <version>2.3</version>
+</dependency>
 		<dependency>
 			<groupId>taglibs</groupId>
 			<artifactId>standard</artifactId>
