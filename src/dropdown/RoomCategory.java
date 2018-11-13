@@ -1,5 +1,4 @@
 package dropdown;
-
 public class RoomCategory {
 	private int id;
     private String name;
