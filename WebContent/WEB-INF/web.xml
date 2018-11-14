@@ -1,35 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-	<display-name>RoomCounter</display-name>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+			xmlns="http://java.sun.com/xml/ns/javaee" 
+			xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
+			version="3.0">
+  <display-name>RoomCounter</display-name>
+  
+  <context-param>
+		<param-name>MONGODB_HOST</param-name>
+		<param-value>localhost</param-value>
+	</context-param>
+	<context-param>
+		<param-name>MONGODB_PORT</param-name>
+		<param-value>27017</param-value>
+	</context-param>
 	
-	<servlet>
-		<servlet-name>InitTimeSlot</servlet-name>
-		<servlet-class>se.servlets.TimeSlotServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>InitTimeSlot</servlet-name>
-		<url-pattern>/InitTimeSlot</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>InitRoom</servlet-name>
-		<servlet-class>se.servlets.RoomServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>InitRoom</servlet-name>
-		<url-pattern>/InitRoom</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>InitSession</servlet-name>
-		<servlet-class>se.servlets.SessionServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>InitSession</servlet-name>
-		<url-pattern>/InitSession</url-pattern>
-	</servlet-mapping>
-	
-	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-	</welcome-file-list>
+  <welcome-file-list>
+
+    <welcome-file>Creation Menu.jsp</welcome-file>
+    
+  </welcome-file-list>
 </web-app>
