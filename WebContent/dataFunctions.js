@@ -67,7 +67,7 @@ function displayTimeSlots(json) {
 
 	$('#curTimeSlots').append(output);
 }
-
+ 
 function displayRooms(json) {
 	var obj = JSON.parse(json);
 
