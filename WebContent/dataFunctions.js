@@ -19,14 +19,13 @@ function modifyTimeSlot() { // called by modify button
 	.split("-");
 	var start = $("input[name='start']");
 	start.val(selected[0]);
-	var end = $("input[name='end']");
-	end.val(selected[1]);
+	var start = $("input[name='end']");
+	start.val(selected[1]);
 	// communicate to db the changes that occur
 }
 
 function modifyRoom() { // called by modify button
-	var selected = $("#roomSelect").children("option:selected").text()
-	.split(";");
+	var selected = $("#roomSelect").children("option:selected").text().split(";");
 	var roomname = $("input[name='room-name']");
 	roomname.val(selected[0].toString().replace(" Roomname:",""));
 	var capacity = $("input[name='capacity']");
@@ -52,7 +51,6 @@ function modifySession() { // called by modify button
 	//room.val(selected[5].toString().replae( "Room:",""));
 	// communicate to db the changes that occur
 }
-//"id":"1" ,"name":"sA" , "number":"1" , "speaker":"sp1" , "date":"11/17/2018" , "timeslot":"12:00-14:00" , "room":"A"
 
 function displayTimeSlots(json) {
 	var obj = JSON.parse(json);
@@ -105,17 +103,7 @@ function displaySessions(json) {
 }
 
 function createTimeSlotDropdown() {
-	var selected = $("#timeSlotSelect").children("option:selected").text()
-	
-	var output = <select name="room">
-	var count = 0;
-	for(var i in selected)
-	{
-		output += '<option>' + selected[count] + '</option>';
-	}
-	output += </select>
-	
-	$('#timeDropdown').append(output);
+	// todo
 }
 function createRoomDropdown() {
 	// todo
@@ -161,7 +149,7 @@ $(document).ready(
 				+ '{ "id":"14" ,"roomname":"M" , "capacity":"12" },'
 				+ '{ "id":"10" ,"roomname":"N" , "capacity":"15" } ]}';
 				
-			var text3 = '{ "session" : ['
+				var text3 = '{ "session" : ['
 				+ '{ "id":"1" ,"name":"sA" , "number":"1" , "speaker":"sp1" , "date":"11/17/2018" , "timeslot":"12:00-14:00" , "room":"A" },'
 				+ '{ "id":"2" ,"name":"sB" , "number":"2" , "speaker":"sp2" , "date":"11/17/2018" , "timeslot":"14:00-16:00" , "room":"B" },'
 				+ '{ "id":"3" ,"name":"sC" , "number":"3" , "speaker":"sp3" , "date":"11/17/2018" , "timeslot":"09:00-11:00" , "room":"C" },'
@@ -173,6 +161,5 @@ $(document).ready(
 			displayTimeSlots(text);
 			displayRooms(text2);
 			displaySessions(text3);
-			//createTimeSlotDropdown();
 
 		});
