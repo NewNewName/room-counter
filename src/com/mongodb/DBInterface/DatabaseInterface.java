@@ -1,4 +1,4 @@
-package com.mongodb.DBInterface;
+package roomcount.database;
 
 import java.sql.Time; 
 import com.mongodb.*;
@@ -15,7 +15,7 @@ import org.bson.Document;
 
 public class DatabaseInterface {
 
-	private String DB_NAME = "DatabaseTest";
+	private String DB_NAME = "";
 	private MongoDatabase db;
 
 	public DatabaseInterface(String url , int port){
@@ -26,13 +26,18 @@ public class DatabaseInterface {
 		this("localhost" , 27017);
 	}
 
-	private static MongoClient getConnection(String url , int port_num) {
+	public MongoDatabase getDB(){
+		return db;
+	}
+
+	private static MongoClient getConnection(url , port_num) {
+        int port_num = 8080;
+        String url = "localhost";
         
         MongoClient mongoClntObj = new MongoClient(url, port_num);
         return mongoClntObj;
 	}
 
-	/*
 	private Block<Document> printBlock = new Block<Document>() {
 		@Override
 		public void apply(final Document document) {
@@ -95,5 +100,4 @@ public class DatabaseInterface {
 	public boolean setSpeakerName() {
 		return false;
 	}
-	*/
 }
