@@ -51,13 +51,11 @@ public class DatabaseInterface {
 	// }
 
 	public String getTimeSlotJSON() {
-		MongoCollection<Document> collection = db.getCollection("TimeSlot");
-		return collection.find().forEach(printBlock);
+		
 	}
 
 	public String getSessionJSON() {
-		MongoCollection<Document> collection = db.getCollection("Session");
-		return collection.find().forEach(printBlock);
+		
 	}
 
 	// public String getSessionName() {
