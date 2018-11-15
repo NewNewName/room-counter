@@ -26,6 +26,10 @@ public class DatabaseInterface {
 		this("localhost" , 27017);
 	}
 
+	public MongoDatabase getDB(){
+		return db;
+	}
+
 	private static MongoClient getConnection(url , port_num) {
         int port_num = 8080;
         String url = "localhost";
